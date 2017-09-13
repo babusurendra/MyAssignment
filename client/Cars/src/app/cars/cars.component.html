@@ -1,0 +1,47 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+
+
+	<h1 class="text-primary"><font size="10">Welcome to the world of Car Info</font></h1>
+	<div class="container">
+		<div class="dropdown">
+			<div class="dropdown-toggle" data-toggle="dropdown">
+				<h5 class="text-danger"><font size="4"> Select the company you loved to review</font></h5>
+				<select (change)='selectCompany($event.target.value)' [(ngModel)]='default'>Select
+<option *ngFor= "let car of existedCompanies" value= {{car}}>
+	{{car}}
+</option>	
+</select>
+				<br><br>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div *ngIf="dispModelDrpDwn">
+		<h5 class="text-danger"><font size="4">Select the Model</font></h5>
+	</div>
+	<select *ngIf="dispModelDrpDwn" (change)='selectModel($event.target.value)' [(ngModel)]='model'>	
+<option *ngFor= "let model of Models" value="{{model.carModel}}">
+	{{model.carModel}}
+</option>
+</select>
+	<div *ngIf='dispImage'>
+		<div *ngFor="let img of imageUrl"><br>
+			<img [src]="img.carImageUrl">
+			<div class="container">
+				<p class="text-left" font size="20">{{img.description}}</p>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+</html>
